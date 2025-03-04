@@ -58,3 +58,26 @@ function initialize() {
     })
 }
 
+function update() {
+    let correct = 0;
+    for (let c = 0; c < width; c++) {
+        let currTile = document.getElementById(row.toString() + "-" + c.toString());
+        let letter = currTile.innerText;
+
+        //Is it in the correct position
+        if (word[c] == letter) {
+            currTile.classList.add("correct");
+            correct += 1;
+        } // Is it in the word?
+        else if (word.includes(letter)) {
+            currTile.classList.add("present");
+        } // Not in word
+        else {
+            currTile.classList.add("absent");
+        }
+        
+        if (correct == width) {
+            gameOver = true;
+        }
+    }
+}
